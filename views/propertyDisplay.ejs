@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin-top: 0;
+            color: #333;
+        }
+        p {
+            margin: 5px 0;
+            color: #666;
+        }
+        a {
+            display: block;
+            margin-top: 10px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+   
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1><%= data.propertyName %></h1>
+        <p><strong>Location:</strong> <%= data.address %>, <%= data.city %></p>
+        <p><strong>Type:</strong> <%= data.type %></p>
+        <p><strong>Dimension:</strong> <%= data.size %> sqft</p>
+        <!-- Add more property details as needed -->
+ 
+        <!-- Add clickable options/buttons to send message to owner, get owner details, report to admin, etc. -->
+        <a href="#>">Send Message to Owner</a>
+        <% if (valid.isValid === "1") { %>
+            <a href="/user/shareDetails/<%= data.userID %>">Get Owner Details</a>
+        <% } else { %>
+            <a href="/user/Sendotp" onclick="openPopup()">Get Owner Details</a>
+        <% } %>
+        
+        <a href="#>">Report Property to Admin</a>
+        
+
+        <div id="otpPopup" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="closePopup()">&times;</span>
+                <h2>Enter OTP</h2>
+                <form action="/user/VerifyUser/<%=valid.userID%>" method="post">
+                <input type="text" id="otp" placeholder="Enter OTP" name="otp">
+                <button type="submit">Submit</button>
+            </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/js/otp_popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        a{
+            text-decoration:none;
+        }
+        nav {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+        .property-box {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .property-box h3 {
+            margin-top: 0;
+        }
+        .property-box p {
+            margin: 5px 0;
+        }
+        .property-box .btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .property-box .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/user/dashboard">Home</a>
+        <a href="/user/searchPage">Search</a>
+        <a href="/user/addproperty">Sell</a>
+        <a href="#">Contact Us</a>
+        <a href="/user/dashboard">My Listed Properties</a>
+        <%if(1){%>
+        <a href="/user/logout">SignOut</a>
+        <%}%>
+        <%if(0){%>
+            <a href="#">SignIn</a>
+        <%}%>
+    </nav>
+
+    <div class="container">
+        <h2>Featured Properties</h2>
+        <%for(let i=0; i<data.length;i++){%>
+
+            <a href="/user/showProperty/<%=data[i].id%>" >
+                <div class="property-box">
+                    <h3><%=data[i].propertyName%></h3>
+                    <p><strong>Location:</strong> <%=data[i].address%>,<%= data[i].city%></p>
+                    <p><strong>Type:</strong> <%=data[i].type%></p>
+                    <p><strong>Dimension:</strong> <%=data[i].size%> sqft</p>
+                    <a href="#" class="btn">I am Interested</a>
+                </div>
+
+            </a>
+           
+        <%}%>
+    
+    </div>
+</body>
+</html>
